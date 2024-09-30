@@ -1,9 +1,9 @@
 class Solution:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
-        M = {}
+        Map = {}
         for i in range(len(nums)):
-            if nums[i] in M.keys() and abs(M[nums[i]] - i) <=k:
+            if nums[i] in Map.keys() and abs(Map[nums[i]] - i) <=k:
                 return True
             else:
-                M[nums[i]] = i
+                Map[nums[i]] = i
         return False
