@@ -1,17 +1,21 @@
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
-        row = 0; zig = False
-        i = 0
-        M = [[] for _ in range(numRows)]
-
-        while(len(s) > i):
-            M[row].append(s[i])
-            if row < numRows-1 and zig == False:
-                row+=1
-            if row > 0 and zig == True:
-                row -= 1
-            if row == 0 or row == numRows-1:
-                zig = not zig
-            i+=1
-
-        return ''.join(''.join(c) for c in M)
+        if numRows == 1 or numRows >= len(s):
+            return s
+        
+        # Initialize rows
+        rows = [''] * numRows
+        row = 0
+        direction = -1  # Direction control
+        
+        for char in s:
+            rows[row] += char
+            
+            # Change direction when at the top or bottom row
+            if row == 0 or row == numRows - 1:
+                direction *= -1
+            
+            row += direction
+        
+        # Combine all rows into one string
+        return ''.join(rows)
