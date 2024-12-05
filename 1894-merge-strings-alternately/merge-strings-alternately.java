@@ -1,9 +1,10 @@
 class Solution {
     public String mergeAlternately(String word1, String word2) {
         // define size, interators, result
-        StringBuilder result = new StringBuilder();
         int size1 = word1.length();
         int size2 = word2.length();
+        int totalLen = size1 + size2;
+        StringBuilder result = new StringBuilder(totalLen);
         int w1count = 0;
         int w2count = 0;
         
